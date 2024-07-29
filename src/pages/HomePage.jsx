@@ -82,7 +82,7 @@ const HomePage = () => {
                     onFinish={addMotorcycle}
                 >
                     <Form.Item
-                        label="Nomor Rangka Kendaraan"
+                        label="Plat Nomor Kendaraan"
                         name="motorcycleId"
                         rules={[{
                             required: true, message: 'Tidak boleh kosong!',

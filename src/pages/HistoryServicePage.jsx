@@ -33,7 +33,7 @@ export const HistoryServicePage = () => {
                     <span className="flex-1">{get(motorcycleSelector.motorcycleDetail, 'catalogId.modelName')}</span>
                 </div>
                 <div className="flex bg-gray-50 p-2">
-                    <span className="flex-1 bold">Nomor Rangka</span>
+                    <span className="flex-1 bold">Plat Nomor</span>
                     <span className="flex-1">{get(motorcycleSelector.motorcycleDetail, 'vin')}</span>
                 </div>
                 <div className="flex bg-red-50 p-2">
