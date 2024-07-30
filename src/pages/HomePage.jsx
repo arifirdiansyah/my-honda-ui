@@ -88,7 +88,7 @@ const HomePage = () => {
                             required: true, message: 'Tidak boleh kosong!',
                         },]}
                     >
-                        <Search placeholder="Nomor Rangka" size="large" allowClear onSearch={findMotorCycleByVin}
+                        <Search placeholder="Plat Nomor" size="large" allowClear onSearch={findMotorCycleByVin}
                                 enterButton/>
                     </Form.Item>
                 </Form>
