@@ -91,6 +91,7 @@ const HomePage = () => {
                         <Search placeholder="Plat Nomor" size="large" allowClear onSearch={findMotorCycleByVin}
                                 enterButton/>
                     </Form.Item>
+                    
                 </Form>
                 {motorcycleSelector.findMotorcycle ?
                     <div className="flex justify-center items-center">

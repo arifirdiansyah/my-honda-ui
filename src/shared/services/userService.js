@@ -32,7 +32,7 @@ export function updateUserData(newUserData, user) {
                 ...newUserData
             }
             dispatch({ type: UserAction.UPDATE_USER_SUCCESS, payload: { item: updatedUser } });
-            message.success("Katalog berhasil diubah");
+            message.success("Profil berhasil diubah");
         } catch ( error ) {
             message.error("Gagal mengubah pengguna");
         }

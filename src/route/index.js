@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import MainLayout from "../shared/components/layout/main-layout";
 import { HistoryServicePage } from "../pages/HistoryServicePage";
 import { DealershipPage } from "../pages/DealershipPage";
+import { ProfilPage } from "../pages/ProfilPage";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,12 @@ const router = createBrowserRouter([
             {
                 path: 'dealerships',
                 element: <DealershipPage/>
+            },
+            {
+                path: 'profil',
+                element: <ProfilPage/>
             }
+    
         ]
     },
     {

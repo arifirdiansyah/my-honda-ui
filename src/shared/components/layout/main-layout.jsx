@@ -6,7 +6,7 @@ import Loading from "../Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { loadCurrentUser } from "../../services/userService";
 import { Content, Header, Footer } from "antd/es/layout/layout";
-import { AppstoreOutlined, HomeOutlined, LogoutOutlined } from "@ant-design/icons";
+import { AppstoreOutlined, HomeOutlined, LogoutOutlined, UserOutlined} from "@ant-design/icons";
 
 
 const MainLayout = () => {
@@ -21,16 +21,7 @@ const MainLayout = () => {
     useEffect(() => {
         dispatch(loadCurrentUser())
     }, [dispatch]);
-    const items = [
-        {
-            key: '1',
-            label: `Home`,
-        },
-        {
-            key: '2',
-            label: `Dealer`,
-        }
-    ]
+   
     const onNavigatePage = (path) => {
         navigate(path);
     }
@@ -94,6 +85,12 @@ const MainLayout = () => {
                             className="h-full hover:cursor-pointer flex flex-col justify-center items-center text-white px-3 border-2 border-gray-600 rounded-md">
                             <AppstoreOutlined/>
                             <span>Dealer</span>
+                        </div>
+                        <div
+                            onClick={() => navigate('/profil')}
+                            className="h-full hover:cursor-pointer flex flex-col justify-center items-center text-white px-3 border-2 border-gray-600 rounded-md">
+                            <UserOutlined/>
+                            <span>Profil</span>
                         </div>
                     </div>
                 </Footer>
