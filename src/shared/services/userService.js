@@ -1,6 +1,7 @@
 import { message } from 'antd';
 import UserAction from "../../redux/user/UserAction";
 import axiosHttp from "../../axiosHandler";
+import { redirect } from 'react-router-dom';
 
 export function getAllUsers() {
     return async (dispatch, getState) => {
@@ -12,11 +13,11 @@ export function getAllUsers() {
                 type: UserAction.LOAD_USER_SUCCESS, payload: {
                     items: response.data.map((item, key) => {
                         item.key = key;
-                        return item
+                        return item;
                     })
                 }
             });
-        } catch ( error ) {
+        } catch (error) {
             message.error("Gagal memuat data pengguna");
         }
     }
@@ -25,15 +26,16 @@ export function getAllUsers() {
 export function updateUserData(newUserData, user) {
     return async (dispatch, getState) => {
         try {
-            dispatch({ type: UserAction.UPDATE_USER_REQUESTED })
+            dispatch({ type: UserAction.UPDATE_USER_REQUESTED });
             await axiosHttp.put(`${process.env.REACT_APP_API_URL}/user/update/${user.id}`, newUserData);
             const updatedUser = {
                 ...user,
                 ...newUserData
-            }
-            dispatch({ type: UserAction.UPDATE_USER_SUCCESS, payload: { item: updatedUser } });
+            };
+            dispatch({ type: UserAction.UPDATE_USER_SUCCESS, payload: { item: updatedUser } });  
             message.success("Profil berhasil diubah");
-        } catch ( error ) {
+           
+        } catch (error) {
             message.error("Gagal mengubah pengguna");
         }
     }
@@ -42,10 +44,11 @@ export function updateUserData(newUserData, user) {
 export function loadCurrentUser() {
     return async (dispatch, getState) => {
         try {
-            dispatch({ type: UserAction.LOAD_CURRENT_USER_REQUESTED })
+            dispatch({ type: UserAction.LOAD_CURRENT_USER_REQUESTED });
+
             const response = await axiosHttp.get(`${process.env.REACT_APP_API_URL}/user/my-info`);
             dispatch({ type: UserAction.LOAD_CURRENT_USER_SUCCESS, payload: { user: response.data } });
-        } catch ( error ) {
+        } catch (error) {
             message.error("Gagal memuat user info");
         }
     }

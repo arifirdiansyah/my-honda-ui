@@ -7,28 +7,27 @@ const initUserState = {
 };
 
 export default function UserReducer(state = initUserState, { type, payload }) {
-    switch ( type ) {
+    switch (type) {
         case UserAction.LOAD_USER_REQUESTED:
         case UserAction.LOAD_CURRENT_USER_REQUESTED:
         case UserAction.UPDATE_USER_REQUESTED: {
             return {
                 ...state,
                 isLoading: true,
-            }
+            };
         }
         case UserAction.LOAD_USER_SUCCESS: {
             return {
                 ...state,
                 isLoading: false,
                 users: payload.items
-            }
+            };
         }
 
         case UserAction.UPDATE_USER_SUCCESS: {
             const usersData = state.users.map((item) => {
                 if (item.id === payload.item.id) {
                     return {
-                        ...item,
                         ...payload.item
                     };
                 }
@@ -40,7 +39,7 @@ export default function UserReducer(state = initUserState, { type, payload }) {
                 ...state,
                 isLoading: false,
                 users: usersData
-            }
+            };
         }
 
         case UserAction.LOAD_CURRENT_USER_SUCCESS: {
@@ -48,7 +47,7 @@ export default function UserReducer(state = initUserState, { type, payload }) {
                 ...state,
                 isLoading: false,
                 currentUser: payload.user
-            }
+            };
         }
 
         default:

@@ -3,8 +3,10 @@ import { Form, Input, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { get } from 'lodash';
 import { loadCurrentUser, updateUserData } from '../shared/services/userService';
+import { useNavigate } from 'react-router-dom';
 
 export const ProfilPage = () => {
+    const navigate = useNavigate()
     const userInfo = useSelector(state => state.UserReducer);
     const dispatch = useDispatch();
     const [formProfil] = Form.useForm();
@@ -26,6 +28,7 @@ export const ProfilPage = () => {
     const submitFormProfil = (value) => {
         if (userInfo.currentUser) {
             dispatch(updateUserData(value, userInfo.currentUser));
+            navigate('/')
         } else {
             console.log('User data is not available.');
         }
