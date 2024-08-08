@@ -6,7 +6,7 @@ import { loadCurrentUser, updateUserData } from '../shared/services/userService'
 import { useNavigate } from 'react-router-dom';
 
 export const ProfilPage = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const userInfo = useSelector(state => state.UserReducer);
     const dispatch = useDispatch();
     const [formProfil] = Form.useForm();
@@ -19,16 +19,17 @@ export const ProfilPage = () => {
         if (userInfo.currentUser) {
             formProfil.setFieldsValue({
                 name: get(userInfo.currentUser, 'name', ''),
-                email: get(userInfo.currentUser, 'email', '')
+                email: get(userInfo.currentUser, 'email', ''),
+                phoneNumber: get(userInfo.currentUser, 'phoneNumber', ''),
+                address: get(userInfo.currentUser, 'address', '')
             });
         }
     }, [formProfil, userInfo]);
 
-
     const submitFormProfil = (value) => {
         if (userInfo.currentUser) {
             dispatch(updateUserData(value, userInfo.currentUser));
-            navigate('/')
+            navigate('/');
         } else {
             console.log('User data is not available.');
         }
@@ -63,6 +64,26 @@ export const ProfilPage = () => {
                     <Input size="large" disabled />
                 </Form.Item>
 
+                <Form.Item
+                    label="Nomor HP"
+                    name="phoneNumber"
+                    rules={[{
+                        required: true, message: 'Tidak boleh kosong!',
+                    }]}
+                >
+                    <Input size="large" type="text" />
+                </Form.Item>
+
+                <Form.Item
+                    label="Alamat"
+                    name="address"
+                    rules={[{
+                        required: true, message: 'Tidak boleh kosong!',
+                    }]}
+                >
+                    <Input size="large" type="text" />
+                </Form.Item>
+
                 <Form.Item>
                     <Button type="primary" htmlType="submit">
                         Update
@@ -70,5 +91,5 @@ export const ProfilPage = () => {
                 </Form.Item>
             </Form>
         </>
-    )
+    );
 }
