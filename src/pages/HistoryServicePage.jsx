@@ -46,7 +46,7 @@ export const HistoryServicePage = () => {
             {detailService ? <ServiceDetail service={detailService} backToServiceList={() => setDetailService(null)}/> :
                 <div className="flex-1 flex flex-col justify-center items-center gap-5">
                     {get(motorcycleSelector, 'services', []).length > 0 ? motorcycleSelector.services.map(service => {
-                        return (<Card title={get(service, 'serviceDate', '')}
+                        return (<Card title={get(service, 'ServiceDate', '')}
                                       extra={<Button type="link"
                                                      onClick={() => setDetailService(service)}>Detail</Button>}
                                       style={{ width: 300 }}>

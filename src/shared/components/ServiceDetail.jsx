@@ -13,6 +13,10 @@ export const ServiceDetail = ({ service, backToServiceList }) => {
                     <span className="flex-1 bold">Tanggal Service</span>
                     <span className="flex-1">{get(service, 'serviceDate')}</span>
                 </div>
+                <div className="flex bg-red-300 p-2">
+                    <span className="flex-1 bold">Tanggal Service Selanjutnya</span>
+                    <span className="flex-1">{get(service, 'nextServiceDate')}</span>
+                </div>
                 <div className="flex bg-gray-50 p-2">
                     <span className="flex-1 bold">Dealer</span>
                     <span className="flex-1">{get(service, 'dealership.name')}</span>
